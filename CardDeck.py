@@ -12,8 +12,19 @@ class Card():
         self.value = value
         self.suit = suit
 
-    def display(self):
+    # (weird stuff)
+    def __str__(self):
+        '''
+        used to print the card
+        print(card) works with this
+        '''
         return self.getName() + " of " + self.suit
+
+    def getValue(self):
+        '''
+        Gets the number value of the card
+        '''
+        return self.value
 
     def getName(self):
         '''
@@ -29,7 +40,7 @@ class Card():
             "Queen",
             "King"
         ]
-        if self.value == 1:
+        if self.value == 1 or self.value > 13:
             return "Ace"
         if self.value > 10:
             tempValue = self.value - 11
