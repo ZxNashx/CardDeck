@@ -132,7 +132,7 @@ class Deck():
         '''
         if self._checkValidIndex(i):
             card = self.cards[i]
-            print(card.display())
+            print(card)
         else:
             print("Card does not exist. ")
     def printDeck(self):
@@ -159,3 +159,5 @@ class Deck():
             self.removeByIndex(index)
             hand.append(card)
         return hand
+d = Deck()
+d.printDeck()
