@@ -11,7 +11,7 @@ class Card():
         '''
         self.value = value
         self.suit = suit
-
+    
     # (weird stuff)
     def __str__(self):
         '''
@@ -78,6 +78,12 @@ class Deck():
             return False
         else:
             return True
+
+    def addCard(self, card):
+        '''
+        add a card into the deck of cards
+        '''
+        self.cards.append(card)
 
     def shuffle(self):
         '''
@@ -159,5 +165,3 @@ class Deck():
             self.removeByIndex(index)
             hand.append(card)
         return hand
-d = Deck()
-d.printDeck()
