@@ -2,7 +2,10 @@
 
 A simple card deck in python
 
+Example usage:
 ```python
+from CardDeck import Deck
+
 deck = Deck()
 
 #create hand with 5 cards
