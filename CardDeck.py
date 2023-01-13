@@ -1,7 +1,7 @@
 from random import randint, shuffle
 
 class Card():
-    def __init__(self, value, suit):
+    def __init__(self, value: int, suit: str):
         '''
         Stores CARD information
         :param value:
@@ -13,20 +13,20 @@ class Card():
         self.suit = suit
     
     # (weird stuff)
-    def __str__(self):
+    def __str__(self) -> str:
         '''
         used to print the card
         print(card) works with this
         '''
         return self.getName() + " of " + self.suit
 
-    def getValue(self):
+    def getValue(self) -> int:
         '''
         Gets the number value of the card
         '''
         return self.value
 
-    def getName(self):
+    def getName(self) -> str:
         '''
         Returns a string variable being the name of the card
         i.e.
@@ -49,7 +49,7 @@ class Card():
             return str(self.value)
 
 class Deck():
-    def __init__(self, joker = False, aceValue=1):
+    def __init__(self, joker: bool = False, aceValue: int = 1):
         self.cards = []
         # create deck of cards, and save it as self.cards
         suits = [
@@ -71,7 +71,7 @@ class Deck():
             aceCard = Card(aceValue, suit)
             self.cards.append(aceCard)
 
-    def _checkValidIndex(self, i):
+    def _checkValidIndex(self, i: int) -> bool:
         # internal function, do not use
         l = len(self.cards)
         if i >= l:
@@ -79,18 +79,19 @@ class Deck():
         else:
             return True
 
-    def addCard(self, card):
+    def addCard(self, card: Card) -> None:
         '''
         add a card into the deck of cards
         '''
         self.cards.append(card)
 
-    def shuffle(self):
+    def shuffle(self) -> None:
         '''
         shuffles the deck of cards
         :return:
         '''
         shuffle(self.cards)
+
     def getRandomCard(self):
         '''
         get a random card from the deck, and its index
@@ -101,7 +102,8 @@ class Deck():
         '''
         i = randint(0,len(self.cards)-1)
         return self.cards[i], i
-    def removeByIndex(self, i):
+
+    def removeByIndex(self, i: int) -> Card:
         '''
         removes card at position i from the deck and returns it (so it is not lost)
         :param i:
@@ -115,7 +117,7 @@ class Deck():
             del self.cards[i]
         return tempCard
 
-    def getByIndex(self, i):
+    def getByIndex(self, i: int) -> Card:
         '''
         get card from deck specified by its index
         :param i:
@@ -129,7 +131,7 @@ class Deck():
         else:
             return Card(0, "Error")
 
-    def printAtIndex(self, i):
+    def printAtIndex(self, i: int) -> None:
         '''
         print the card at a certain index
         :param i:
@@ -151,7 +153,7 @@ class Deck():
             print("Card Index: " + str(i))
             self.printAtIndex(i)
 
-    def getHand(self, cardCount):
+    def getHand(self, cardCount: int) -> list:
         '''
         returns a list of x cards
         :param cardCount:
