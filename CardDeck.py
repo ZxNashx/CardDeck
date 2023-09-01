@@ -49,8 +49,16 @@ class Card():
             return str(self.value)
 
 class Deck():
-    def __init__(self, joker: bool = False, aceValue: int = 1):
+    def __init__(self, joker: bool = False, aceHigh: bool = True):
         self.cards = []
+
+        # create the default value for the ace card depending on if it is
+        # a high or low ace value. (1 OR 14)
+        aceValue = -1
+        if aceHigh:
+            aceValue = 14
+        else:
+            aceValue = 1
         # create deck of cards, and save it as self.cards
         suits = [
             "Hearts",
@@ -72,7 +80,7 @@ class Deck():
             self.cards.append(aceCard)
 
     def _checkValidIndex(self, i: int) -> bool:
-        # internal function, do not use
+        # internal function, checks if the index is in valid deck size range.
         l = len(self.cards)
         if i >= l:
             return False
@@ -167,3 +175,17 @@ class Deck():
             self.removeByIndex(index)
             hand.append(card)
         return hand
+
+    def chanceOfCard(self, suit: str, value: int) -> float:
+        '''
+        chanceOfCard: Check the chance of a certain card getting drawn.
+
+        :param suit: suit of card getting checked. "*" for any suit
+        :param value: numerical value of card getting checked. -1 for any value
+        :return: the chance that the card gets drawn from the deck (1/n)
+        '''
+        rep_count = 0
+        for card in self.cards:
+            if ((card.suit == suit) or suit == "*") and ((card.value == value) or value == -1):
+                rep_count += 1
+        return rep_count / len(self.cards)

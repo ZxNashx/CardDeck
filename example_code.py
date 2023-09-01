@@ -1,9 +1,3 @@
-# CardDeck (WIP)
-
-A simple card deck in python
-
-Example usage:
-```python
 from CardDeck import Deck
 
 deck = Deck()
@@ -20,9 +14,3 @@ for card in myHand:
 # add first card back into deck
 deck.addCard(myHand[0])
 del myHand[0]
-
-```
-
-
-
-
